@@ -19,6 +19,16 @@ function Loadapp() {
 
 Loadapp()
 
+async function getloginpage() {
+    try {
+        var res = await axios.get("/login")
+    } catch (error) {
+        document.write(error)
+    }
+
+    return await res.data
+}
+
 // start actually loading the page
 console.log(window.location)
 async function Process() {
@@ -27,6 +37,8 @@ async function Process() {
     } catch (error) {
         if(error?.response?.status === 401) {
             console.log("Loading login page")
+            let login = await getloginpage()
+            document.write(login)
         } else {
             document.write(error)
         }

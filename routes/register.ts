@@ -14,7 +14,7 @@ export default async function RegisterRoutes(app: Express) {
     app.use(st(path.join(process.cwd(), "public")))
 
     app.get("/", AuthMiddleware, RenderIndex)
-    app.get("login", LoginRoute)
+    app.get("/login", LoginRoute)
     app.get("/file/*", GetFile)
     
     app.use((req, res) => res.sendStatus(404))
