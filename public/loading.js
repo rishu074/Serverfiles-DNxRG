@@ -33,7 +33,17 @@ async function getloginpage() {
 console.log(window.location)
 async function Process() {
     try {
-        var res = await axios.get(window.location.pathname)
+        var res = await axios(
+            {
+                url: window.location.pathname,
+                headers: {
+                    "xsrf": window.localStorage.getItem("xsrf")
+                }
+            }
+        )
+        let resDataToShow = await res.data
+        document.write(resDataToShow)
+        window.stop()
     } catch (error) {
         if(error?.response?.status === 401) {
             console.log("Loading login page")
