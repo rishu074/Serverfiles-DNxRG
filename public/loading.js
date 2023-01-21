@@ -39,6 +39,7 @@ async function Process() {
             console.log("Loading login page")
             let login = await getloginpage()
             document.write(login)
+            window.stop()
         } else {
             document.write(error)
         }
