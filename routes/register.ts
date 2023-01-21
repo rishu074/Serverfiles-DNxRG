@@ -8,12 +8,14 @@ import AuthMiddleware from "../middlewares/auth";
 import path from 'path'
 import LoginRoute from "./renders/login";
 import cp from 'cookie-parser'
+import bp from 'body-parser'
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
     app.use(IpCheckersMiddleware)
     app.use(st(path.join(process.cwd(), "public")))
     app.use(cp())
+    app.use(bp())
 
     app.get("/", AuthMiddleware, RenderIndex)
     app.get("/login", LoginRoute)
