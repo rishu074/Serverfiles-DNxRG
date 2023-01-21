@@ -1,4 +1,4 @@
-function passwordGenerator(length: number) {
+export default function passwordGenerator(length: number) {
     const chars =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789012345678901234567890123456789";
 
