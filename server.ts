@@ -1,10 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import RegisterRoutes from './routes/register';
+import InfoLog from './loggers/info';
 dotenv.config()
 
 const app = express()
 
-app.use((req, res) => res.end('Hi'))
 
 
 if(!process.env.PORT) {
@@ -12,5 +13,6 @@ if(!process.env.PORT) {
 }
 
 app.listen(process.env.PORT, () => {
-    console.log(`Application started on PORT ${process.env.PORT}`)
+    InfoLog(`Application started on PORT ${process.env.PORT}`)
+    return RegisterRoutes(app)
 })
