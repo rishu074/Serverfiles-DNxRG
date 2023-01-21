@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import RegisterRoutes from './routes/register';
 import InfoLog from './loggers/info';
+import fs from 'fs';
 dotenv.config()
 
 const app = express()
@@ -15,6 +16,9 @@ interface Process {
 
 // @ts-ignore
 process.RequestsMemoryDatabase = []
+
+let whitelistedIPS = JSON.parse(fs.readFileSync('./auth/ips_whitelist.json', {encoding:"utf-8"}))
+process.WhitelistedIPS = whitelistedIPS
 
 
 if (!process.env.PORT) {

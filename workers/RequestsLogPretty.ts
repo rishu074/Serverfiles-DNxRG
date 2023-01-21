@@ -14,9 +14,12 @@ export default function RequestsLogPretty() {
 
     for (let i = 0; i < json_file.requests.length; i++) {
         const element = json_file.requests[i];
+
         if((Date.now() - element.timestamp) < 1000) {
             requests_per_second++
-        } else if ((Date.now() - element.timestamp) > 5000) {
+        } 
+
+        if ((Date.now() - element.timestamp) > 5000) {
             json_file.requests.splice(json_file.requests[i], 1) 
         }
     }

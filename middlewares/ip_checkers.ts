@@ -16,5 +16,10 @@ export default function IpCheckersMiddleware(req: Request, res: Response, next: 
         return res.status(500).end("Server side error, Please contact any admin")
     }
 
+    // check for ip blacklist
+    if(process.WhitelistedIPS.indexOf(REQUEST_IP?.toString() as string) === -1) {
+        return res.status(403).end("403 Forbidden")
+    }
+
     next()
 }

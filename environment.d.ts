@@ -10,7 +10,8 @@ declare global {
           ua: string,
           path: string,
           timestamp: number
-        }>
+        }>;
+        WhitelistedIPS: Array<string>
       }
     }
   }
