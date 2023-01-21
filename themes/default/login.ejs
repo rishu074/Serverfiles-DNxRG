@@ -82,6 +82,9 @@
                 pass_key
             })
             disableLoginButton()
+            let xsrf = await res.data.xsrf
+            window.localStorage.setItem("xsrf", xsrf)
+            window.location.reload()
 
         } catch (error) {
             disableLoginButton()

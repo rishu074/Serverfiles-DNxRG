@@ -7,6 +7,7 @@ declare global {
         LOGIN_Q: string;
         LOGIN_USERKEY: string;
         LOGIN_PASSKEY: string;
+        SSL: "false" | "true";
       }
       interface Process {
         RequestsMemoryDatabase: Array<{
