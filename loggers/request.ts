@@ -16,10 +16,20 @@ export default function CreateRequestLog(ip: string, path: string, ua: string) {
 
     try {
         json_file.push(
-            `${}`
+            {
+                path,
+                ip,
+                ua
+            }
         )
     } catch (error) {
         ErrorLog("Not good json file")
         throw Error("Not good json file")
+    }
+
+    try {
+        
+    } catch (error) {
+        
     }
 }

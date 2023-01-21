@@ -3,6 +3,13 @@ declare global {
       interface ProcessEnv {
         PORT: string;
       }
+      interface Process {
+        RequestsMemoryDatabase: [{
+          ip: string,
+          ua: string,
+          path: string
+        }]
+      }
     }
   }
   
