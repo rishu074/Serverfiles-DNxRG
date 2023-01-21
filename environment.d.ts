@@ -12,7 +12,12 @@ declare global {
           path: string,
           timestamp: number
         }>;
-        WhitelistedIPS: Array<string>
+        WhitelistedIPS: Array<string>,
+        SessionKeys: {
+          session_key: string,
+          xsrf_token: string,
+          _comment: string
+        }
       }
     }
   }

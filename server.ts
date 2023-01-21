@@ -16,6 +16,8 @@ process.RequestsMemoryDatabase = []
 let whitelistedIPS = JSON.parse(fs.readFileSync('./auth/ips_whitelist.json', {encoding:"utf-8"}))
 process.WhitelistedIPS = whitelistedIPS
 
+process.SessionKeys = JSON.parse(fs.readFileSync('./auth/session.json', {encoding:"utf-8"}))
+
 
 if (!process.env.PORT) {
     throw new Error("No env variable port found")

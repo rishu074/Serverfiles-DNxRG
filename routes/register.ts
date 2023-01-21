@@ -6,6 +6,7 @@ import GetFile from "./files/get_file";
 import RenderIndex from "./renders";
 import AuthMiddleware from "../middlewares/auth";
 import path from 'path'
+import LoginRoute from "./renders/login";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -13,6 +14,7 @@ export default async function RegisterRoutes(app: Express) {
     app.use(st(path.join(process.cwd(), "public")))
 
     app.get("/", AuthMiddleware, RenderIndex)
+    app.get("login", LoginRoute)
     app.get("/file/*", GetFile)
     
     app.use((req, res) => res.sendStatus(404))

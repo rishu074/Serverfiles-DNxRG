@@ -21,3 +21,17 @@ Loadapp()
 
 // start actually loading the page
 console.log(window.location)
+async function Process() {
+    try {
+        var res = await axios.get(window.location.pathname)
+    } catch (error) {
+        if(error?.response?.status === 401) {
+            console.log("Loading login page")
+        } else {
+            document.write(error)
+        }
+    }
+}
+
+Process()
+
