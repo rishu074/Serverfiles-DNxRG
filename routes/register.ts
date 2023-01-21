@@ -4,6 +4,7 @@ import InfoLog from "../loggers/info";
 import StartWorkers from "../workers/HandleWorkers";
 import GetFile from "./files/get_file";
 import RenderIndex from "./renders";
+import AuthMiddleware from "../middlewares/auth";
 import path from 'path'
 
 export default async function RegisterRoutes(app: Express) {
@@ -11,7 +12,7 @@ export default async function RegisterRoutes(app: Express) {
     app.use(IpCheckersMiddleware)
     app.use(st(path.join(process.cwd(), "public")))
 
-    app.get("/", RenderIndex)
+    app.get("/", AuthMiddleware, RenderIndex)
     app.get("/file/*", GetFile)
     
     app.use((req, res) => res.sendStatus(404))
