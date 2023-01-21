@@ -3,6 +3,7 @@ declare global {
       interface ProcessEnv {
         PORT: string;
         WORKER_LOGS: "false" | "true";
+        THEME: string;
       }
       interface Process {
         RequestsMemoryDatabase: Array<{

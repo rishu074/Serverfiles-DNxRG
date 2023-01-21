@@ -1,4 +1,5 @@
 {
     "session_key": "abcd",
-    "_comment": "Changes every 10 minutes"
+    "xsrf_token": "fds",
+    "_comment": "session_key and xsrf_token Changes every 10 minutes"
 }
