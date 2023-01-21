@@ -4,6 +4,9 @@ declare global {
         PORT: string;
         WORKER_LOGS: "false" | "true";
         THEME: string;
+        LOGIN_Q: string;
+        LOGIN_USERKEY: string;
+        LOGIN_PASSKEY: string;
       }
       interface Process {
         RequestsMemoryDatabase: Array<{

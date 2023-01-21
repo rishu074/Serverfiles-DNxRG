@@ -9,6 +9,7 @@ import path from 'path'
 import LoginRoute from "./renders/login";
 import cp from 'cookie-parser'
 import bp from 'body-parser'
+import ApiLogin from "./api/login";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -18,6 +19,7 @@ export default async function RegisterRoutes(app: Express) {
 
     app.get("/", AuthMiddleware, RenderIndex)
     app.get("/login", LoginRoute)
+    app.post("/login", bp.json(), ApiLogin)
     app.get("/file/*", GetFile)
     
     app.use((req, res) => res.sendStatus(404))

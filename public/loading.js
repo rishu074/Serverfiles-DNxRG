@@ -29,8 +29,7 @@ async function getloginpage() {
     return await res.data
 }
 
-// start actually loading the page
-console.log(window.location)
+
 async function Process() {
     try {
         var res = await axios(
@@ -42,17 +41,26 @@ async function Process() {
             }
         )
         let resDataToShow = await res.data
+
+        document.open()
         document.write(resDataToShow)
+        document.close()
+
         window.stop()
         clearInterval(loadingAnimator)
     } catch (error) {
         if(error?.response?.status === 401) {
-            console.log("Loading login page")
             let login = await getloginpage()
+
+            document.open()
             document.write(login)
+            document.close()
+
             window.stop()
         } else {
+            document.open()
             document.write(error)
+            document.close()
         }
         clearInterval(loadingAnimator)
     }
