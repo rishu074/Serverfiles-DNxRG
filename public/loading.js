@@ -46,7 +46,7 @@ async function Process() {
         document.write(resDataToShow)
         document.close()
 
-        window.stop()
+        // window.stop()
         clearInterval(loadingAnimator)
     } catch (error) {
         if(error?.response?.status === 401) {
@@ -56,7 +56,7 @@ async function Process() {
             document.write(login)
             document.close()
 
-            window.stop()
+            // window.stop()
         } else {
             document.open()
             document.write(error)
