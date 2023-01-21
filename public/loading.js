@@ -64,6 +64,8 @@ async function Process() {
         }
         clearInterval(loadingAnimator)
     }
+
+    return
 }
 
 Process()
