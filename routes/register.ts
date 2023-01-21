@@ -10,6 +10,7 @@ import LoginRoute from "./renders/login";
 import cp from 'cookie-parser'
 import bp from 'body-parser'
 import ApiLogin from "./api/login";
+import ListenToCommands from "../interface/commandListener";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -25,4 +26,5 @@ export default async function RegisterRoutes(app: Express) {
     app.use((req, res) => res.sendStatus(404))
     // start the workers
     StartWorkers(() => InfoLog("Registered all the workers"))
+    ListenToCommands(() => InfoLog("Listening to input"))
 }
