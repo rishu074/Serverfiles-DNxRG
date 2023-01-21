@@ -44,6 +44,7 @@ async function Process() {
         let resDataToShow = await res.data
         document.write(resDataToShow)
         window.stop()
+        clearInterval(loadingAnimator)
     } catch (error) {
         if(error?.response?.status === 401) {
             console.log("Loading login page")
@@ -53,6 +54,7 @@ async function Process() {
         } else {
             document.write(error)
         }
+        clearInterval(loadingAnimator)
     }
 }
 

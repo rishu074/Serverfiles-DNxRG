@@ -15,7 +15,6 @@ export default async function RegisterRoutes(app: Express) {
     app.use(IpCheckersMiddleware)
     app.use(st(path.join(process.cwd(), "public")))
     app.use(cp())
-    app.use(bp())
 
     app.get("/", AuthMiddleware, RenderIndex)
     app.get("/login", LoginRoute)
