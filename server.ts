@@ -4,5 +4,13 @@ dotenv.config()
 
 const app = express()
 
+app.use((req, res) => res.end('Hi'))
 
-app.listen()
+
+if(!process.env.PORT) {
+    throw new Error("No env variable port found")
+}
+
+app.listen(process.env.PORT, () => {
+    console.log(`Application started on PORT ${process.env.PORT}`)
+})
