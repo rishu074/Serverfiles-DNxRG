@@ -12,10 +12,11 @@ export default function RequestsHandlerWorker() {
 
     for (let i = 0; i < process.RequestsMemoryDatabase.length; i++) {
         const element = process.RequestsMemoryDatabase[i];
-        json_file.push(element)
+        json_file.requests.push(element)
     }
 
     fs.writeFileSync("./auth/requests.json", JSON.stringify(json_file, null, 2), {encoding: "utf-8"})
+    process.RequestsMemoryDatabase = []
 
     WorkerLog("RequestsHandlerWorker run")
 }

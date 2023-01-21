@@ -1,7 +1,7 @@
 import ErrorLog from "./error";
 import fs from 'fs';
 
-export default function CreateRequestLog(ip: string, path: string, ua: string) {
+export default function CreateRequestLog(ip: string, path: string, ua: string, timestamp: number) {
     if(!fs.existsSync("./auth/requests.json")) {
         ErrorLog("The file auth/requests.json not found")
         throw Error("The file auth/requests.json not found")
@@ -12,7 +12,8 @@ export default function CreateRequestLog(ip: string, path: string, ua: string) {
             {
                 path,
                 ip,
-                ua
+                ua,
+                timestamp
             }
         )
     } catch (error) {

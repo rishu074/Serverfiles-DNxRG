@@ -10,7 +10,7 @@ export default function IpCheckersMiddleware(req: Request, res: Response, next: 
 
     // log to requests
     try {
-        CreateRequestLog(REQUEST_IP as string, req.originalUrl ,req.headers['user-agent'] as string)
+        CreateRequestLog(REQUEST_IP as string, req.originalUrl ,req.headers['user-agent'] as string, Date.now())
     } catch (error: any) {
         ErrorLog(error)
         return res.status(500).end("Server side error, Please contact any admin")

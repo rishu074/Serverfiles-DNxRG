@@ -2,13 +2,15 @@ declare global {
     namespace NodeJS {
       interface ProcessEnv {
         PORT: string;
+        WORKER_LOGS: "false" | "true";
       }
       interface Process {
-        RequestsMemoryDatabase: [{
+        RequestsMemoryDatabase: Array<{
           ip: string,
           ua: string,
-          path: string
-        }]
+          path: string,
+          timestamp: number
+        }>
       }
     }
   }
