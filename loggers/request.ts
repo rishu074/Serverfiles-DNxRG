@@ -8,14 +8,7 @@ export default function CreateRequestLog(ip: string, path: string, ua: string) {
     }
 
     try {
-        var json_file = JSON.parse(fs.readFileSync("./auth/requests.json", {encoding: "utf-8"}))
-    } catch (error) {
-        ErrorLog("Json file not good")
-        throw Error("The json file is not good")
-    }
-
-    try {
-        json_file.push(
+        process.RequestsMemoryDatabase.push(
             {
                 path,
                 ip,
@@ -23,13 +16,7 @@ export default function CreateRequestLog(ip: string, path: string, ua: string) {
             }
         )
     } catch (error) {
-        ErrorLog("Not good json file")
+        ErrorLog("Not good json file " + error)
         throw Error("Not good json file")
-    }
-
-    try {
-        
-    } catch (error) {
-        
     }
 }
