@@ -5,10 +5,11 @@
   "repository": "git@github.com:NotRoyadma/Serverfiles-DNxRG.git",
   "author": "NotRoyadma <royadma2314@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "ts-node-dev --clear server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "build-start": "tsc && node dist/server.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
