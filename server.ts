@@ -3,16 +3,12 @@ import dotenv from 'dotenv';
 import RegisterRoutes from './routes/register';
 import InfoLog from './loggers/info';
 import fs from 'fs';
+import path from 'path';
 dotenv.config()
 
 const app = express()
-interface Process {
-    RequestsMemoryDatabase: Array<{
-        ip: string,
-        ua: string,
-        path: string
-    }>
-}
+app.set("view engine", "ejs");
+app.set("views", path.join(process.cwd(), "themes", process.env.THEME));
 
 // @ts-ignore
 process.RequestsMemoryDatabase = []
