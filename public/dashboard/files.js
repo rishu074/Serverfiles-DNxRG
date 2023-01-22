@@ -44,13 +44,25 @@ let table_body = document.getElementById("table-body")
 var back_button = document.getElementById("back-btn")
 var uplaod_button = document.getElementById("upload-btn")
 
+function loading(boo) {
+    if(boo) {
+        table_body.innerHTML = ""
+        document.getElementById("no-files").style.display = "none"
+        document.getElementById("loader-a").style.display = "flex"
+    } else {
+        document.getElementById("loader-a").style.display = "none"
+    }
+}
+
 
 async function loadFiles() {
+    loading(true)
     let files = await axios.get(state.nextLink, {
         headers: {
             "xsrf": window.localStorage.getItem("xsrf")
         }
     })
+    await loading(false)
 
     files = await files.data
 
@@ -62,6 +74,13 @@ async function loadFiles() {
         back_button.hidden = true
     } else {
         back_button.hidden = false
+    }
+
+
+    if(files.length === 0) {
+        document.getElementById("no-files").style.display = "flex"
+    } else {
+        document.getElementById("no-files").style.display = "none"
     }
 
     // loop through files and create tr's
