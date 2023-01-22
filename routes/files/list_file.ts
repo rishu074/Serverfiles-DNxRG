@@ -3,6 +3,7 @@ import cookie from 'cookie'
 import fs from 'fs'
 import path from 'path';
 import humanizeDuration from 'humanize-duration';
+import prettyBytes from 'pretty-bytes';
 
 export default async function ListFiles(req: Request, res: Response, next: NextFunction) {
     const PATH_TO_FILE = req.params['0']
@@ -20,7 +21,7 @@ export default async function ListFiles(req: Request, res: Response, next: NextF
     let data_to_return: Array<{
         name: string,
         isDir: boolean,
-        size: number,
+        size: string,
         last_modified: string,
         created: string
     }> = []
@@ -33,8 +34,8 @@ export default async function ListFiles(req: Request, res: Response, next: NextF
             name: element,
             isDir: stats.isDirectory(),
             last_modified: humanizeDuration(Date.now() - stats.mtimeMs, {round: true}) + " ago",
-            created: humanizeDuration(Date.now() - stats.mtimeMs, {round: true}) + " ago",
-            size: stats.size
+            created: humanizeDuration(Date.now() - stats.ctimeMs, {round: true}) + " ago",
+            size: prettyBytes(stats.size)
         })
     }
     // console.log(stats)
