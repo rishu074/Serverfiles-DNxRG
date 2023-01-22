@@ -19,13 +19,13 @@ function ParseInnerHtml(isDir, name, size, last_modified) {
 </td>
 <td class="align-middle text-center">
     <!-- <span class="text-secondary text-xs font-weight-bold">23/04/18</span> -->
-    <div class="btn-group position-static">
+    <div class="btn-group dropdown position-sticky" style="z-index: 2;">
         <button type="button" class="btn dropdown-toggle"
             data-bs-toggle="dropdown" data-boundary="window" data-bs-display="static"
             aria-expanded="false">
             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-lg-end">
+        <ul class="dropdown-menu">
             <li><button class="dropdown-item text-danger" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
                 Delete</button>
             </li>
