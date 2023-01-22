@@ -14,6 +14,7 @@ export default function DownloadsSaverWorker() {
         const element = process.DownloadsData[i];
         json_file.downloads.push(element)
     }
+    json_file.total = json_file.downloads.length
 
     fs.writeFileSync("./auth/downloads.json", JSON.stringify(json_file, null, 2), {encoding: "utf-8"})
     process.DownloadsData = []

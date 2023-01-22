@@ -12,6 +12,7 @@ app.set("views", path.join(process.cwd(), "themes", process.env.THEME));
 
 // @ts-ignore
 process.RequestsMemoryDatabase = []
+process.DownloadsData = []
 
 let whitelistedIPS = JSON.parse(fs.readFileSync('./auth/ips_whitelist.json', {encoding:"utf-8"}))
 process.WhitelistedIPS = whitelistedIPS

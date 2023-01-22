@@ -1,4 +1,33 @@
 {
-    "downloads": [],
-    "total": 0
+  "downloads": [
+    {
+      "time": 1674374272857,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674374352453,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674374359285,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674374359500,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674374359678,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674374359890,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    },
+    {
+      "time": 1674201559890,
+      "file": "/home/royadma/Desktop/Github/Serverfiles-DNxRG/saved_files/test.txt"
+    }
+  ],
+  "total": 7
 }
