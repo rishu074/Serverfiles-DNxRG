@@ -2,7 +2,7 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 
 var commandsAndTheirFunctions = {
-    "quit": async () => {
+    "/quit": async () => {
         process.exit(0)
     },
     "/whitelist": async (cmd: string, ...arg: any[]) => {
@@ -37,6 +37,14 @@ var commandsAndTheirFunctions = {
         if(cmd === "reload") {
             dotenv.config()
             console.log("\nReloaded env vars.\n")
+        } else if (cmd === "help") {
+            console.log("\navailable commands: \"reload\"\n")
+        }
+    },
+    "/sessions": async (cmd: string) => {
+        if(cmd === "reload") {
+            process.SessionKeys = JSON.parse(fs.readFileSync('./auth/session.json', {encoding:"utf-8"}))
+            console.log("\nReloaded session vars.\n")
         } else if (cmd === "help") {
             console.log("\navailable commands: \"reload\"\n")
         }
