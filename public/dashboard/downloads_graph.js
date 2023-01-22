@@ -368,6 +368,8 @@ document.getElementById("dark-version").checked = true
 darkMode(document.getElementById("dark-version"))
 get_download_data()
 
-setInterval(async () => {
-    await update_graph_Data()
-}, 3000);
+document.getElementById("refresh-btn").addEventListener("click", update_graph_Data)
+
+// setInterval(async () => {
+//     await update_graph_Data()
+// }, 3000);
