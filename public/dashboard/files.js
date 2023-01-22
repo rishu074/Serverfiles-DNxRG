@@ -26,7 +26,7 @@ function ParseInnerHtml(isDir, name, size, last_modified) {
             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
         </button>
         <ul class="dropdown-menu">
-            <li><button class="dropdown-item text-danger" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+            <li><button class="dropdown-item text-danger" id="delete-btn" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
                 Delete</button>
             </li>
         </ul>
@@ -58,7 +58,7 @@ async function loadFiles() {
 
     // clear the table
     table_body.innerHTML = ""
-    if(state.currentPath === "/") {
+    if (state.currentPath === "/") {
         back_button.hidden = true
     } else {
         back_button.hidden = false
@@ -67,16 +67,31 @@ async function loadFiles() {
     // loop through files and create tr's
     for (let i = 0; i < files.length; i++) {
         const element = files[i];
-        
+
         let _tr = document.createElement("tr")
 
         _tr.innerHTML = ParseInnerHtml(element.isDir, element.name, element.size, element.last_modified)
         table_body.appendChild(_tr)
         let _text = _tr.querySelector("td")
+
+
+        // delete button listeners
+        let _delete_btn = _tr.querySelector("td > div > ul > li > button#delete-btn")
+        _delete_btn.addEventListener('click', async () => {
+            let _new_link = state.currentPath + element.name
+            await axios.delete("/delete" + _new_link, {
+                headers: {
+                    xsrf: window.localStorage.getItem('xsrf')
+                }
+            })
+            await loadFiles()
+            return
+        })
+
         // add click listeners
         _text.style.cursor = "pointer"
         _text.addEventListener("click", async () => {
-            if(element.isDir) {
+            if (element.isDir) {
                 state.currentPath = state.currentPath + element.name + "/"
                 state.nextLink = state.nextLink + element.name + "/"
                 loadFiles()
@@ -99,7 +114,7 @@ let _temp = window.location.pathname.split("files")
 _temp.shift()
 _temp = _temp.join("")
 
-if(!_temp.endsWith("/")) {
+if (!_temp.endsWith("/")) {
     _temp = _temp + "/"
 }
 
@@ -113,10 +128,10 @@ back_button.addEventListener("click", () => {
     _next_path.splice(_next_path.length - 2, 2)
     _next_path = _next_path.join("/")
 
-    if(_next_path.trim() === "") {
+    if (_next_path.trim() === "") {
         _next_path = "/"
     }
-    if(!_next_path.endsWith("/")) {
+    if (!_next_path.endsWith("/")) {
         _next_path = _next_path + "/"
     }
 
