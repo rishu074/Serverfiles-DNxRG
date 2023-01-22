@@ -1,5 +1,89 @@
 var chart;
+var chart2;
 
+function initiateGraph_requests(labels, data) {
+    var ctx1 = document.getElementById("chart-line-req").getContext("2d");
+
+    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+    chart2 = new Chart(ctx1, {
+        type: "line",
+        data: {
+            labels,
+            datasets: [{
+                label: "Requests per second ",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#5e72e4",
+                backgroundColor: gradientStroke1,
+                borderWidth: 3,
+                fill: true,
+                data,
+                maxBarThickness: 6
+
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#fbfbfb',
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#ccc',
+                        padding: 20,
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
+}
 function initiateGraph(labels, data) {
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -364,11 +448,58 @@ async function update_graph_Data() {
     chart.update()
 }
 
+async function get_requests_data() {
+    let data = await axios.get("/reqs", {
+        headers: {
+            "xsrf": window.localStorage.getItem("xsrf")
+        }
+    })
+    let dcata = await data.data
+    initiateGraph_requests([new Date().toLocaleTimeString('en-us', {hour: '2-digit', minute: '2-digit', second: '2-digit'})], [dcata])
+}
+
+async function update_requests_data() {
+    let data = await axios.get("/reqs", {
+        headers: {
+            "xsrf": window.localStorage.getItem("xsrf")
+        }
+    })
+    let dcata = await data.data
+    let currTime = new Date().toLocaleTimeString('en-us', {hour: '2-digit', minute: '2-digit', second: '2-digit'})
+
+    if(chart2.data.labels.indexOf(currTime) != -1) {
+        chart2.data.datasets.forEach((dataset) => {
+            dataset.data.splice(chart2.data.labels.indexOf(currTime), 1, dcata)
+        });
+    } else {
+        if(chart2.data.labels.length >= 10) {
+            chart2.data.labels.shift()
+            chart2.data.labels.push(currTime)
+            chart2.data.datasets.forEach((dataset) => {
+                dataset.data.shift()
+                dataset.data.push(dcata)
+            });
+        } else {
+            chart2.data.labels.push(currTime)
+            chart2.data.datasets.forEach((dataset) => {
+                dataset.data.push(dcata)
+            });
+        }
+    }
+
+    chart2.update()
+}
+
 document.getElementById("dark-version").checked = true
 darkMode(document.getElementById("dark-version"))
-get_download_data()
-
 document.getElementById("refresh-btn").addEventListener("click", update_graph_Data)
+get_download_data()
+get_requests_data()
+
+setInterval(async () => {
+    await update_requests_data()
+}, 1000);
+
 
 // setInterval(async () => {
 //     await update_graph_Data()

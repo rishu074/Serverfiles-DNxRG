@@ -12,6 +12,7 @@ import bp from 'body-parser'
 import ApiLogin from "./api/login";
 import ListenToCommands from "../interface/commandListener";
 import GetDownloads from "./api/get_downloads";
+import GetRequests from "./api/get_requests";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -21,6 +22,7 @@ export default async function RegisterRoutes(app: Express) {
 
     app.get("/", AuthMiddleware, RenderIndex)
     app.get("/downloads", AuthMiddleware, GetDownloads)
+    app.get("/reqs", AuthMiddleware, GetRequests)
     app.get("/login", LoginRoute)
     app.post("/login", bp.json(), ApiLogin)
     app.get("/file/*", GetFile)

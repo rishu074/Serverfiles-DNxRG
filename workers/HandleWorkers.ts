@@ -7,6 +7,10 @@ export default function StartWorkers(cb: Function) {
     setInterval(() => {
         RequestsHandlerWorker()
         RequestsLogPretty()
+    }, 1000)
+
+
+    setInterval(() => {
         DownloadsSaverWorker()
     }, 5000)
 
