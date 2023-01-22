@@ -2,232 +2,40 @@
   "per_sec": 1,
   "requests": [
     {
-      "path": "/",
+      "path": "/reqs",
       "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696315
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696327
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696338
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696352
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696364
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696379
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696390
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696402
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696415
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696426
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696437
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696451
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696463
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696474
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696485
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696497
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696509
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696521
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696534
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696546
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696557
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696569
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696582
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696594
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696604
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696616
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696628
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696639
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696652
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696664
-    },
-    {
-      "path": "/",
-      "ip": "::1",
-      "ua": "curl/7.81.0",
-      "timestamp": 1674380696676
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+      "timestamp": 1674382945676
     },
     {
       "path": "/reqs",
       "ip": "::1",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380696852
+      "timestamp": 1674382946670
     },
     {
       "path": "/reqs",
       "ip": "::1",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380697831
+      "timestamp": 1674382947679
     },
     {
       "path": "/reqs",
       "ip": "::1",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380698827
+      "timestamp": 1674382948677
     },
     {
       "path": "/reqs",
       "ip": "::1",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380699837
+      "timestamp": 1674382949680
     },
     {
       "path": "/reqs",
       "ip": "::1",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380700839
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380701821
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674380702842
+      "timestamp": 1674382950679
     }
   ]
 }
