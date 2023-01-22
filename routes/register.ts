@@ -18,6 +18,7 @@ import RenderFiles from "./renders/files";
 import UploadFile from "./api/upload_file";
 import fileUpload from "express-fileupload";
 import DeleteFile from "./api/delete";
+import CreateFolder from "./api/create_folder";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -34,6 +35,7 @@ export default async function RegisterRoutes(app: Express) {
     app.get("/api/list/*", AuthMiddleware, ListFiles)
     app.get("/files/*", AuthMiddleware, RenderFiles)
     app.delete("/delete/*", AuthMiddleware, DeleteFile)
+    app.post("/create/*", AuthMiddleware, bp.json(), CreateFolder)
     app.post("/upload", AuthMiddleware, fileUpload({
         limits: {fileSize: 1e+9},
         tempFileDir: "./saved_files",

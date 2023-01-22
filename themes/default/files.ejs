@@ -210,6 +210,9 @@
             </div>
         </nav>
         <!-- End Navbar -->
+        <!-- Modal -->
+
+
         <div class="container-fluid py-4">
             <div class="progress" style="
             height: 100%;
@@ -228,7 +231,40 @@
                         flex-direction: row;
                         justify-content: space-between;
                     ">
-                            <h6>Storage</h6>
+                            <div style="display: flex; flex-direction: row;">
+                                <h6>Storage</h6>
+                                <button class="btn" style="padding: 0;" data-bs-toggle="modal"
+                                    data-bs-target="#askModal">
+                                    <p style="padding-left: 8px;" id="create-btn" data-toggle="tooltip"
+                                        data-placement="top" title="Create new folder"><i
+                                            class="fa fa-plus cursor-pointer" aria-hidden="true"></i></p>
+                                </button>
+
+                                <!-- <button type="button" class="btn" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Launch demo modal
+                                    </button> -->
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="askModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="askModal" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="example-text-input"
+                                                        class="form-control-label">Folder name</label>
+                                                    <input class="form-control bg-dark text-white" id="folder-name-create" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn" id="create-btn-main">Create</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div style="display: flex; flex-direction: row;">
                                 <p style="padding-right: 8px;" id="upload-btn" data-toggle="tooltip"
                                     data-placement="top" title="Upload a file"><i class="fa fa-upload"
@@ -265,7 +301,8 @@
                             <div class="w-100 h-100 justify-content-center p-5" id="no-files" style="display: none;">
                                 <p>No files to display </p>
                             </div>
-                            <div class="w-100 h-100 justify-content-center p-5" style="gap: 20px; display: none;" id="loader-a">
+                            <div class="w-100 h-100 justify-content-center p-5" style="gap: 20px; display: none;"
+                                id="loader-a">
                                 <div class="spinner-grow text-dark" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>

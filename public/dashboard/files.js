@@ -207,3 +207,20 @@ uplaod_button.addEventListener("click", () => {
         setProgressBar("none")
     }
 })
+
+var create_btn = document.getElementById("create-btn-main")
+create_btn.addEventListener("click", async () => {
+    let folder_name = document.getElementById("folder-name-create").value;
+    if(!/^[a-zA-Z0-9_-]{1,160}$/.test(folder_name)) {
+        return
+    }
+
+    await axios.post("/create" + state.currentPath, {
+        folder_name
+    }, {
+        headers: {
+            xsrf: window.localStorage.getItem('xsrf')
+        }
+    })
+    loadFiles()
+})
