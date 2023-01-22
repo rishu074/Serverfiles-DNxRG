@@ -15,6 +15,8 @@ import GetDownloads from "./api/get_downloads";
 import GetRequests from "./api/get_requests";
 import ListFiles from "./files/list_file";
 import RenderFiles from "./renders/files";
+import UploadFile from "./api/upload_file";
+import fileUpload from "express-fileupload";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -30,6 +32,11 @@ export default async function RegisterRoutes(app: Express) {
     app.get("/file/*", GetFile)
     app.get("/api/list/*", AuthMiddleware, ListFiles)
     app.get("/files/*", AuthMiddleware, RenderFiles)
+    app.post("/upload", AuthMiddleware, fileUpload({
+        limits: {fileSize: 1e+9},
+        tempFileDir: "./saved_files",
+        useTempFiles: true
+    }), UploadFile)
     
     app.use((req, res) => res.sendStatus(404))
     // start the workers

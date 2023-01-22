@@ -42,6 +42,7 @@ var state = {
 }
 let table_body = document.getElementById("table-body")
 var back_button = document.getElementById("back-btn")
+var uplaod_button = document.getElementById("upload-btn")
 
 
 async function loadFiles() {
@@ -68,13 +69,13 @@ async function loadFiles() {
         const element = files[i];
         
         let _tr = document.createElement("tr")
-        _tr.style.cursor = "pointer"
 
         _tr.innerHTML = ParseInnerHtml(element.isDir, element.name, element.size, element.last_modified)
         table_body.appendChild(_tr)
-
+        let _text = _tr.querySelector("td")
         // add click listeners
-        _tr.addEventListener("click", async () => {
+        _text.style.cursor = "pointer"
+        _text.addEventListener("click", async () => {
             if(element.isDir) {
                 state.currentPath = state.currentPath + element.name + "/"
                 state.nextLink = state.nextLink + element.name + "/"
@@ -123,4 +124,52 @@ back_button.addEventListener("click", () => {
     state.currentPath = _next_path
     state.nextLink = state.api_url + _next_path
     loadFiles()
+})
+
+// handle upload
+
+function setProgressBar(display) {
+    let _pg_bar = document.getElementById("pg-bar")
+    let pg = document.getElementById("pg")
+    pg.ariaValueNow = 0
+    pg.innerText = "0%"
+    pg.style.width = "0%"
+    _pg_bar.style.display = display
+}
+
+function updateProgressBar(percentage) {
+    let pg = document.getElementById("pg")
+    pg.ariaValueNow = percentage
+    pg.innerText = percentage + "%"
+    pg.style.width = percentage + "%"
+}
+
+
+uplaod_button.style.cursor = "pointer"
+uplaod_button.addEventListener("click", () => {
+    let _input = document.createElement("input")
+    _input.type = "file"
+    _input.click()
+    _input.onchange = async (ev) => {
+        // upload the files
+        let form_data = new FormData()
+        setProgressBar("block")
+
+        form_data.append("file", _input.files[0])
+        form_data.append("path", state.currentPath)
+
+        await axios.post("/upload", form_data, {
+            headers: {
+                'xsrf': window.localStorage.getItem('xsrf'),
+                'Content-Type': 'multipart/form-data'
+            },
+            onUploadProgress: (progressEvent) => {
+                const percentage = (progressEvent.loaded * 100) / progressEvent.total;
+                updateProgressBar(+percentage.toFixed(2));
+                console.log(percentage)
+            }
+        })
+        await loadFiles()
+        setProgressBar("none")
+    }
 })

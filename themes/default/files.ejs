@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
     <title>
-        Argon Dashboard 2 by Creative Tim
+        Serverfiles - Files
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -211,6 +211,14 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
+            <div class="progress" style="
+            height: 100%;
+            padding: 2px;
+            margin: 4px;
+            display: none;
+        " id="pg-bar">
+                <div class="progress-bar text-dark role="progressbar" id="pg" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+              </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
@@ -220,8 +228,13 @@
                         justify-content: space-between;
                     ">
                             <h6>Files</h6>
-                            <h6 class="cursor-pointer" id="back-btn"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                            </h6>
+                            <div style="display: flex; flex-direction: row;">
+                                <p style="padding-right: 8px;" id="upload-btn"><i class="fa fa-upload" aria-hidden="true"></i>
+                                     Upload</p>
+                                <h6 class="cursor-pointer" id="back-btn"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                                </h6>
+
+                            </div>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
