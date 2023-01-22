@@ -1,3 +1,5 @@
+var chart;
+
 function initiateGraph(labels, data) {
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -316,6 +318,56 @@ async function get_download_data() {
     initiateGraph(Object.keys(data_to_send).map((v, i) => `${v} ${currentMonth}`), Object.values(data_to_send))
 }
 
+async function update_graph_Data() {
+    let data = await axios.get("/downloads", {
+        headers: {
+            "xsrf": window.localStorage.getItem("xsrf")
+        }
+    })
+    let dcata = await data.data
+    document.getElementById("tot-downloads").innerText = dcata.total
+    let today_downloads = []
+    let last_10_days = []
+    const ONE_DAY = 8.64e+7
+    const TEN_DAYS = 8.64e+8
+
+    for (let i = 0; i < dcata.downloads.length; i++) {
+        const element = dcata.downloads[i];
+        if((Date.now() - element.time) < ONE_DAY) {
+            today_downloads.push(element)
+        }
+
+        if((Date.now() - element.time) < TEN_DAYS) {
+            last_10_days.push(element)
+        }
+    }
+    document.getElementById("tod-downloads").innerHTML = (today_downloads.length)
+
+    let data_to_send = {
+
+    }
+    let currentMonth = new Date(Date.now()).toLocaleString('en-us', { month: 'short' });
+
+    for (let i = 0; i < last_10_days.length; i++) {
+        const element = last_10_days[i];
+        let now = new Date(element.time).getDate()
+
+        data_to_send[now] != undefined ? data_to_send[now]++ : data_to_send[now] = 1
+    }
+
+    // initiateGraph(Object.keys(data_to_send).map((v, i) => `${v} ${currentMonth}`), Object.values(data_to_send))
+
+    chart.data.labels = Object.keys(data_to_send).map((v, i) => `${v} ${currentMonth}`)
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data = Object.values(data_to_send)
+    });
+    chart.update()
+}
+
 document.getElementById("dark-version").checked = true
 darkMode(document.getElementById("dark-version"))
 get_download_data()
+
+setInterval(async () => {
+    await update_graph_Data()
+}, 3000);
