@@ -1,11 +1,13 @@
 import RequestsHandlerWorker from "./RequestsHandler";
 import RequestsLogPretty from "./RequestsLogPretty";
 import ChangeSessionKeys from "./ChangeSessionKeys";
+import DownloadsSaverWorker from "./DownloadsSaver";
 
 export default function StartWorkers(cb: Function) {
     setInterval(() => {
         RequestsHandlerWorker()
         RequestsLogPretty()
+        DownloadsSaverWorker()
     }, 5000)
 
     setInterval(() => {

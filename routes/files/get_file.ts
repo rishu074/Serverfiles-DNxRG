@@ -9,6 +9,9 @@ export default async function GetFile(req: Request, res: Response, next: NextFun
         return res.sendStatus(404)
     }
 
-
+    process.DownloadsData.push({
+        time: Date.now(),
+        file: absolute_path
+    })
     res.sendFile(absolute_path)
 }
