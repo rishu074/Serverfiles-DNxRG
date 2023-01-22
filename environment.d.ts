@@ -26,6 +26,10 @@ declare global {
         time: number,
         file: string,
       }>
+      HashDatabase: Array<{
+        path: string,
+        hash: string
+      }>
     }
   }
 }
