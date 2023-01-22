@@ -14,6 +14,7 @@ import ListenToCommands from "../interface/commandListener";
 import GetDownloads from "./api/get_downloads";
 import GetRequests from "./api/get_requests";
 import ListFiles from "./files/list_file";
+import RenderFiles from "./renders/files";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -28,6 +29,7 @@ export default async function RegisterRoutes(app: Express) {
     app.post("/login", bp.json(), ApiLogin)
     app.get("/file/*", GetFile)
     app.get("/api/list/*", AuthMiddleware, ListFiles)
+    app.get("/files/*", AuthMiddleware, RenderFiles)
     
     app.use((req, res) => res.sendStatus(404))
     // start the workers

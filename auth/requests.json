@@ -1,41 +1,4 @@
 {
-  "per_sec": 1,
-  "requests": [
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382956675
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382957676
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382958676
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382959679
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382960677
-    },
-    {
-      "path": "/reqs",
-      "ip": "::1",
-      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
-      "timestamp": 1674382961672
-    }
-  ]
+  "per_sec": 0,
+  "requests": []
 }
