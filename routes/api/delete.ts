@@ -3,6 +3,7 @@ import cookie from 'cookie'
 import fs from 'fs'
 import path from 'path'
 import rimraf from 'rimraf'
+import { removeFileFromDb, removeFolderFromDB } from '../../interface/hashDbFunctions'
 
 export default async function DeleteFile(req: Request, res: Response, next: NextFunction) {
     const PATH_TO_FILE = req.params['0']
@@ -15,8 +16,10 @@ export default async function DeleteFile(req: Request, res: Response, next: Next
 
     try {
         if(stats.isDirectory()) {
+            removeFolderFromDB(absolute_path)
             rimraf.sync(absolute_path)
         } else {
+            removeFileFromDb(absolute_path)
             fs.rmSync(absolute_path)
         }
     } catch (error) {

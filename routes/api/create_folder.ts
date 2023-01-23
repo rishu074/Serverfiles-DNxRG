@@ -3,6 +3,7 @@ import cookie from 'cookie'
 import fs from 'fs'
 import path from 'path'
 import rimraf from 'rimraf'
+import { removeFolderFromDB } from '../../interface/hashDbFunctions'
 
 export default async function CreateFolder(req: Request, res: Response, next: NextFunction) {
     const PATH_TO_FILE = req.params['0']
@@ -15,6 +16,7 @@ export default async function CreateFolder(req: Request, res: Response, next: Ne
     }
     try {
         fs.mkdirSync(path.join(absolute_path, folder_name))
+        removeFolderFromDB(path.join(absolute_path, folder_name))
     } catch (error) {
         console.error(error)
         return res.sendStatus(500)

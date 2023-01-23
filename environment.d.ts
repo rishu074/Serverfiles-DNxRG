@@ -28,7 +28,8 @@ declare global {
       }>
       HashDatabase: Array<{
         path: string,
-        hash: string
+        hash: string,
+        isDir: boolean
       }>
     }
   }
