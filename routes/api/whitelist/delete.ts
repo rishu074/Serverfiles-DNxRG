@@ -12,6 +12,8 @@ export default async function RemoveWhitelist(req: Request, res: Response, next:
         if (whitelistedIPS.indexOf(req.query?.["t"]) === -1) return res.status(409).send("No " + req.query?.["t"] + " found in whitelist")
 
         whitelistedIPS.splice(whitelistedIPS.indexOf(req.query?.["t"]), 1)
+        process.WhitelistedIPS = whitelistedIPS
+
 
         fs.writeFileSync('./auth/ips_whitelist.json', JSON.stringify(whitelistedIPS, null, 2), { encoding: "utf-8" })
 

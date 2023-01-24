@@ -9,6 +9,7 @@ export default async function AddWhitelist(req: Request, res: Response, next: Ne
     try {
         let whitelistedIPS = JSON.parse(fs.readFileSync('./auth/ips_whitelist.json', { encoding: "utf-8" }))
         whitelistedIPS.push(req.query?.["t"])
+        process.WhitelistedIPS = whitelistedIPS
         fs.writeFileSync('./auth/ips_whitelist.json', JSON.stringify(whitelistedIPS, null, 2), { encoding: "utf-8" })
 
         return res.sendStatus(201)
