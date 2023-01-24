@@ -47,3 +47,8 @@ export function getFromDatabase(patz: string) {
 
     return undefined
 }
+
+export function HandleNestedHashRemove(patz: string) {
+    debugger;
+    let _directories = patz.split("saved_files")
+}

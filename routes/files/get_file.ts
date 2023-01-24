@@ -16,7 +16,7 @@ export default async function GetFile(req: Request, res: Response, next: NextFun
     if(req.query?.k && req.query?.k === "checksum") {
         let fromDb = getFromDatabase(absolute_path)
         if(fromDb) {
-            // console.log("db", process.HashDatabase)
+            console.log("db", process.HashDatabase)
             return res.end(fromDb.hash)
         }
 
