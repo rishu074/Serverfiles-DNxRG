@@ -19,6 +19,8 @@ import UploadFile from "./api/upload_file";
 import fileUpload from "express-fileupload";
 import DeleteFile from "./api/delete";
 import CreateFolder from "./api/create_folder";
+import WhitelistRender from "./renders/whitelist";
+import LogsRender from "./renders/logs";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -26,12 +28,17 @@ export default async function RegisterRoutes(app: Express) {
     app.use(st(path.join(process.cwd(), "public")))
     app.use(cp())
 
-    app.get("/", AuthMiddleware, RenderIndex)
-    app.get("/downloads", AuthMiddleware, GetDownloads)
-    app.get("/reqs", AuthMiddleware, GetRequests)
+    // non-authenticated routes
     app.get("/login", LoginRoute)
     app.post("/login", bp.json(), ApiLogin)
     app.get("/file/*", GetFile)
+
+
+    app.get("/", AuthMiddleware, RenderIndex)
+    app.get("/downloads", AuthMiddleware, GetDownloads)
+    app.get("/reqs", AuthMiddleware, GetRequests)
+    app.get("/whitelist", AuthMiddleware, WhitelistRender)
+    app.get("/logs", AuthMiddleware, LogsRender)
     app.get("/api/list/*", AuthMiddleware, ListFiles)
     app.get("/files/*", AuthMiddleware, RenderFiles)
     app.delete("/delete/*", AuthMiddleware, DeleteFile)
