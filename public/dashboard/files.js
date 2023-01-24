@@ -54,6 +54,11 @@ function loading(boo) {
     }
 }
 
+function updatePath() {
+    let _p = document.getElementById("html-path")
+    _p.innerText = state.currentPath
+}
+
 
 async function loadFiles() {
     loading(true)
@@ -63,6 +68,7 @@ async function loadFiles() {
         }
     })
     await loading(false)
+    updatePath()
 
     files = await files.data
 
