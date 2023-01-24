@@ -1,3 +1,4 @@
+import path from "path";
 
 
 export function removeFileFromDb(patz: string) {
@@ -49,6 +50,7 @@ export function getFromDatabase(patz: string) {
 }
 
 export function HandleNestedHashRemove(patz: string) {
-    debugger;
-    let _directories = patz.split("saved_files")
+    let _directories = patz.split("saved_files")[1].split("/")[1];
+
+    removeFolderFromDB(path.join(process.cwd(), "saved_files", _directories))
 }
