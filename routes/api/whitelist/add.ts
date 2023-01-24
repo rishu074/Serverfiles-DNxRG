@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import fs from 'fs'
 
 export default async function AddWhitelist(req: Request, res: Response, next: NextFunction) {
-    if (req.query?.["t"]) {
+    if (!req.query?.["t"]) {
         return res.sendStatus(400)
     }
 

@@ -21,6 +21,9 @@ import DeleteFile from "./api/delete";
 import CreateFolder from "./api/create_folder";
 import WhitelistRender from "./renders/whitelist";
 import LogsRender from "./renders/logs";
+import GetWhitelist from "./api/whitelist/get";
+import AddWhitelist from "./api/whitelist/add";
+import RemoveWhitelist from "./api/whitelist/delete";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -48,6 +51,11 @@ export default async function RegisterRoutes(app: Express) {
         tempFileDir: "./saved_files",
         useTempFiles: true
     }), UploadFile)
+
+    // whitelist
+    app.get("/api/whitelist", AuthMiddleware, GetWhitelist)
+    app.post("/api/whitelist", AuthMiddleware, AddWhitelist)
+    app.delete("/api/whitelist", AuthMiddleware, RemoveWhitelist)
     
     app.use((req, res) => res.sendStatus(404))
     // start the workers

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import fs from 'fs'
 
 export default async function RemoveWhitelist(req: Request, res: Response, next: NextFunction) {
-    if(req.query?.["t"]) {
+    if(!req.query?.["t"]) {
         return res.sendStatus(400)
     }
 
@@ -17,7 +17,7 @@ export default async function RemoveWhitelist(req: Request, res: Response, next:
 
         fs.writeFileSync('./auth/ips_whitelist.json', JSON.stringify(whitelistedIPS, null, 2), { encoding: "utf-8" })
 
-        return res.sendStatus(201)
+        return res.status(201).end("Deleted")
     } catch (error) {
         console.error(error)
         return res.sendStatus(500)

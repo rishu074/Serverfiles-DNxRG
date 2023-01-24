@@ -7,6 +7,7 @@ export default function IpCheckersMiddleware(req: Request, res: Response, next: 
     if(!REQUEST_IP) {
         res.status(500).send("Server side error, Please contact any admin")
     }
+    // console.log(REQUEST_IP)
     
     // check for ip blacklist
     if(process.WhitelistedIPS.indexOf(REQUEST_IP?.toString() as string) === -1) {
