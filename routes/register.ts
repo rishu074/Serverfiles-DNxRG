@@ -24,6 +24,7 @@ import LogsRender from "./renders/logs";
 import GetWhitelist from "./api/whitelist/get";
 import AddWhitelist from "./api/whitelist/add";
 import RemoveWhitelist from "./api/whitelist/delete";
+import { GetRequestsFull } from "./api/get_requests";
 
 export default async function RegisterRoutes(app: Express) {
     InfoLog("Registering routes and middlewares")
@@ -40,6 +41,7 @@ export default async function RegisterRoutes(app: Express) {
     app.get("/", AuthMiddleware, RenderIndex)
     app.get("/downloads", AuthMiddleware, GetDownloads)
     app.get("/reqs", AuthMiddleware, GetRequests)
+    app.get("/requests", AuthMiddleware, GetRequestsFull)
     app.get("/whitelist", AuthMiddleware, WhitelistRender)
     app.get("/logs", AuthMiddleware, LogsRender)
     app.get("/api/list/*", AuthMiddleware, ListFiles)
