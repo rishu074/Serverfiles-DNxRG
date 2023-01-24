@@ -12,10 +12,11 @@ export function removeFileFromDb(patz: string) {
 }
 
 export function removeFolderFromDB(patz: string) {
+    // console.log(patz, process.HashDatabase)
     for (let i = 0; i < process.HashDatabase.length; i++) {
         const element = process.HashDatabase[i];
         
-        if(element.path.startsWith(patz)) {
+        if(element.path.startsWith(patz) || element.path === patz) {
             process.HashDatabase.splice(i, 1)
         }
     }
